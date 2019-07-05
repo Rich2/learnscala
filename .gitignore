@@ -1,0 +1,7 @@
+project/project/
+target/
+out/
+.idea*/
+bin/
+*.class
+*.log
