@@ -9,4 +9,4 @@ Delete the Strat jar in lib. In openstrat sbt use
 
 Strat/assembly
 
-and then copy the jar from the openstrat/strat/target/scala2.13/ into the learnscala/lib folder.
+and then copy the resulting jar from the openstrat/strat/target/scala2.13/ into the learnscala/lib folder.
