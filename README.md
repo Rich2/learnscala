@@ -1,6 +1,6 @@
 # learnscala
 
-This is a deriviative project from openstrat.
+This is a deriviative project from openstrat. Do not open issues on this project, open them on openstrat.
 
 Currently using openstrat library jar version 0.0.4.
 
