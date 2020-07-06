@@ -3,7 +3,7 @@ package learn
 import ostrat._, geom._, pCanv._
 
 /** D Series lessons deal with persistence */
-case class LessonD1(canv: CanvasPlatform) extends CanvasSimple("Lesson D1")
+case class LessonD1(canv: CanvasPlatform) extends CanvasNoPanels("Lesson D1")
 {  
   val t1 = 5.str  
   val t2 = 2.2.str  
@@ -13,13 +13,13 @@ case class LessonD1(canv: CanvasPlatform) extends CanvasSimple("Lesson D1")
   val t4 = v1.str
   
   val v2: Vec2 = 4.6 vv 78.4
-  val l1 = Line2(v1, v2)
+  val l1 = LineSeg(v1, v2)
   val t5 = l1.str//So note how there is a semicolon between the two points but a comma between the x and y values of each point. 
   
   val topStrs = Arr(t1, t2, t3, t4, t5)
   val topBlock = MText(200, topStrs)//So note we've created a couple of useful Function objects below for use in this lesson series.  
   
-  repaint(topBlock)  
+  repaint(topBlock)
 }
 
 object SText

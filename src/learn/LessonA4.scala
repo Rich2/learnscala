@@ -10,17 +10,19 @@ import ostrat._, geom._, pCanv._, Colour._
 // Assuming you are running the "mill -w name.runBackground" when you do a save mill will automatically rebuild and you can see the result of your changes.
 // The associated commands will appear / disappear from the screen.
  
-case class LessonA4(canv: CanvasPlatform) extends CanvasSimple("Lesson A3")
+case class LessonA4(canv: CanvasPlatform) extends CanvasNoPanels("Lesson A4")
 {
   val stuff = Arr(
-      LineDraw(0 vv 0, 160 vv 100),//This line starts at the centre of the screen and goes to point 160 right of centre and 100 up form centre.
-      LineDraw(0 vv 50, 150 vv 200, 3),
-      LineDraw(50 vv -50, 200 vv -50, 2, Red),//Note if you don't include a Colour you get Black
+    LineDraw(0 vv 0, 160 vv 100),//This line starts at the centre of the screen and goes to point 160 right of centre and 100 up form centre.
+    LineDraw(0 vv 50, 150 vv 200, 3),
+    LineDraw(50 vv -50, 200 vv -50, 2, Red),//Note if you don't include a Colour you get Black
+
+    LinePath(0 vv -50, 50 vv -100, -25 vv -75, 200 vv -60).draw(2, Orange),
    
-      ArcDraw(-200 vv 0, 0 vv 0, 0 vv 200),
-      ArcDraw(-220 vv 0, 0 vv 0, 0 vv 220, 4, Pink),
-      BezierDraw(200 vv -350, -500 vv -300, -600 vv -300, -450 vv -200, 2, Green)
-      )
+    CArcDrawOld(-200 vv 0, 0 vv 0, 0 vv 200),
+    CArcDrawOld(-220 vv 0, 0 vv 0, 0 vv 220, 4, Pink),
+    BezierDraw(200 vv -350, -500 vv -300, -600 vv -300, -450 vv -200, 2, Green),
+  )
   repaint(stuff)
 }
 
@@ -35,6 +37,3 @@ case class LessonA4(canv: CanvasPlatform) extends CanvasSimple("Lesson A3")
   * message. The third type is Colour. Note Colours must have the correct capital letters. You can just try guessing the colours or you can google /
   * duckduck web colours to see what is available. Again put a Colour where a number or a string is expected or vice versa and the compiler will
   * complain. */
-
-
- 

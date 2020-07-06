@@ -10,18 +10,25 @@ import ostrat._, geom._, pCanv._, Colour._
 // Assuming you are running the "mill -w name.runBackground" when you do a save mill will automatically rebuild and you can see the result of your changes.
 // The associated commands will appear / disappear from the screen.
  
-case class LessonA5(canv: CanvasPlatform) extends CanvasSimple("Lesson A4")
+case class LessonA5(canv: CanvasPlatform) extends CanvasNoPanels("Lesson A5")
 {
-  val stuff = Arr(
-      LineDraw(0 vv 0, 160 vv 100),//This line starts at the centre of the screen and goes to point 160 right of centre and 100 up form centre.
-      LineDraw(0 vv 50, 150 vv 200, 3),
-      LineDraw(50 vv -50, 200 vv -50, 2, Red),//Note if you don't include a Colour you get Black
-   
-      ArcDraw(-200 vv 0, 0 vv 0, 0 vv 200),
-      ArcDraw(-220 vv 0, 0 vv 0, 0 vv 220, 4, Pink),
-      BezierDraw(200 vv -350, -500 vv -300, -600 vv -300, -450 vv -200, 2, Green)
-      )
-  repaint(stuff)
+  val c1 = CArc(0, 100, 0, 0, 3)
+  val d1 = c1.draw(2, Red)
+  val c2 = c1.slate(200, 50)
+  val d2 = c2.draw(2, Orange)
+  val c3 = CArc(150, 0, 50, 0, math.Pi / 2)
+  val d3 = c3.draw(2, Blue)
+  val c4 = CArc(170, 0, 0, 0, math.Pi)
+  val d4 = c3.draw(2, Violet)
+  val c5 = CArc(190, 0, -10, 10, - math.Pi)
+  val d5 = c5.draw(2, Brown)
+  val c6 = CArc(-100, 200, -200, 100,  math.Pi / 5)
+  val d6 = c6.draw(2, Green)
+  val a1 = Arr(d1, d2, d3, d4, d5, d6)
+  val a2 = a1 ++ a1.flatMap(_.startCenEndTexts)
+
+  val cen6 = TextGraphic("c6 cen", 14, -100 vv 200)
+  repaint(a2)
 }
 
 /** There are three types of values above. Numbers, text and Colours. Try changing the numbers, save the file and you should things move around the
@@ -35,6 +42,3 @@ case class LessonA5(canv: CanvasPlatform) extends CanvasSimple("Lesson A4")
   * message. The third type is Colour. Note Colours must have the correct capital letters. You can just try guessing the colours or you can google /
   * duckduck web colours to see what is available. Again put a Colour where a number or a string is expected or vice versa and the compiler will
   * complain. */
-
-
- 

@@ -2,7 +2,7 @@
 package learn
 import ostrat._, geom._, pCanv._
 
-case class LessonC5(canv: CanvasPlatform) extends CanvasSimple("Lesson C5")
+case class LessonC5(canv: CanvasPlatform) extends CanvasNoPanels("Lesson C5")
 {
   val r1 = ARect(Vec2Z, 500, 300)
   val r2 = ARect(Vec2Z, 400, 250)
@@ -12,14 +12,14 @@ case class LessonC5(canv: CanvasPlatform) extends CanvasSimple("Lesson C5")
   var rArr = Arr(r1, r2, r3, r4, r5)
   def gArr = rArr.map(_.sGraphic)
   val startText = TextGraphic("Click on the rectangles. All rectangles under the point will cycle their colour.", 28, 0 vv 400)
-  repaint(gArr :+ startText)
+  repaint(gArr +- startText)
   
-  mouseUp = (v, b, s) => 
+  mouseUp = (b, s, v) =>
   {
     s.foreach{ obj =>
-      val r = obj.asInstanceOf[ARect] 
-      rArr = rArr.replace(r, r.mutateColour(r.colour.nextFromRainbow))
+      //val r = obj.asInstanceOf[ARect]
+      //rArr = rArr.replace(r, r.mutateColour(r.colour.nextFromRainbow))
     }    
-    repaint(gArr :+ startText)
+    repaint(gArr +- startText)
   }
 }

@@ -2,7 +2,7 @@
 package learn
 import ostrat._, geom._, pCanv._, Colour._
 
-case class LessonA7(canv: CanvasPlatform) extends CanvasSimple("Lesson A6")
+case class LessonA7(canv: CanvasPlatform) extends CanvasNoPanels("Lesson A7")
 {
   val pt1 = -200 vv 200
   val arcCentre = 0 vv 200
@@ -15,7 +15,7 @@ case class LessonA7(canv: CanvasPlatform) extends CanvasSimple("Lesson A6")
   
   repaints(
       //A shape is just a closed sequence of curve segments */
-      Shape(LineSeg(pt1), ArcSeg(arcCentre, pt2), ArcSeg(arcCentre, pt3), LineSeg(pt4), BezierSeg(ctrl1, ctrl2, pt5)).fill(Pink),
+      PolyCurve(LineTail(pt1), ArcTail(arcCentre, pt2), ArcTail(arcCentre, pt3), LineTail(pt4), BezierTail(ctrl1, ctrl2, pt5)).fill(Pink),
       TextGraphic("pt1", 16, pt1),
       TextGraphic("arcCentre", 16, arcCentre),
       TextGraphic("pt2", 16, pt2),

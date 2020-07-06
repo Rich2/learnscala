@@ -1,7 +1,7 @@
 package learn
 import ostrat._, geom._, pCanv._, Colour._
 
-case class LessonA2(canv: CanvasPlatform) extends CanvasSimple("Lesson A2")
+case class LessonA2(canv: CanvasPlatform) extends CanvasNoPanels("Lesson A2")
 {
   // everything on a line onwards from // is ignored by the compiler (which turns code into something a machine can run)
   // they are useful amongst other things for humans to remind themselves what is intended in their coding and give hints to others trying to understand
@@ -15,12 +15,19 @@ case class LessonA2(canv: CanvasPlatform) extends CanvasSimple("Lesson A2")
     // Text Graphic on the screen, using a point (Vec2 = 2 dimensional vector) from the centre of the screen
     // the point we use here: 0 vv 300 means 0 pixels to the right and 300 pixels up from the center of the screen
     // the vv separates the values for vectors in the same way commas separates arguments
-    TextGraphic("This text is 300 pixels up.", 18, 0 vv 300, Red),
+    TextGraphic("This text is 300 pixels up.", 18, 0 vv 300, Red, CenAlign),
 
     //In this one the the - (minus) signifies the reverse direction, so here the Text Graphic Object is placed 200 pixels down from
     // the center of the screen
     TextGraphic("This text is 400 pixels right, down 200", 25, 400 vv -200),
     //TextGraphic("This text can't be seen till you uncomment it and rebuild the programme.", 18, 100 vv -125, Violet)
+
+    //Here we try different baseline (vertical alignment)
+
+    TextGraphic("-300, 0", 14, -300 vv 0, Orange),
+    TextGraphic("-300, 100", 14, -300 vv 100, Violet),
+    TextGraphic("x=0, y=100", 14, 0 vv 100, Green),
+    TextGraphic("222, 100", 14, 222 vv 100, SlateBlue),
   )
 }
 

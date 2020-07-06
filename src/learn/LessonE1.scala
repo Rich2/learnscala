@@ -6,33 +6,36 @@ import ostrat._, geom._, pCanv._
 case class LessonE1(canv: CanvasPlatform) extends CmdBarGui("Lesson E1")
 {
   import e1._
-  var state: GState = GState.start
-  var cmd: Option[TurnCmd] = None
-  var statusText = "Left click to set action to Move. Middle or right click to set action to CycleColour."  
+  var state: GameState = GameState.start
+  var cmd: TurnCmd = NoMove
+  var statusText = "Right click to set action to Move. Left to set action to CycleColour. Press Turn button or middle click for next turn."
   
   def cmdDisp = cmd match
-  {
-    case Some(Move(v)) => Arr(Arrow.draw(state.posn, v, zOrder = -1))
-    case Some(CycleColour) => Arr(state.drawNextColour)
+  { case Move(v) => Arr(Arrow.draw(state.posn, v))
+    case CycleColour => Arr(state.drawNextColour)
     case _ => Arr()
   }
-  
-  def disp() =
+
+  /** frame refers to the screen output. In the same way that a movie is constructed from a number of still frames. So we create the "action" in a
+   * graphical application through a series of frames. Unlike in the movies our display may not change for significant periods of time. Where we can
+   * it is simpler to create the whole screen out, to create each from a blank slate so to speak rather than just painting the parts of the dsplay
+   * that have been modified. */
+  def frame(): Unit =
   { reTop(Arr(StdButton.turn(state.turnNum + 1), status))
-    mainPanel.repaint(state.fillRect +: cmdDisp)
+    mainRepaint(state.fillRect +: cmdDisp)
   }
-  
-  disp()
-  
-  topBar.mouseUp = (v, b , s) => s match
-  {
-    case Arr(Turn) => { state = state.turn(cmd); cmd = None; disp() }
-    case _ => 
+  def newTurn(): Unit = { state = state.turn(cmd); cmd = NoMove; frame() }
+
+  frame()
+
+  topBar.mouseUp = (b, s, v) => s match
+  { case List(Turn) => newTurn()
+    case _ =>
   }
-  
-  mainPanel.mouseUp = (v, b, s) => b match 
-  {
-    case LeftButton => {cmd = Some(Move(v)); disp() }
-    case _ => { cmd = Some(CycleColour); disp() }   
+
+  mainMouseUp = (b, s, v) => b match
+  { case RightButton => { cmd = Move(v); frame() }
+    case LeftButton => { cmd = CycleColour; frame() }
+    case _ => newTurn()
   }
 }

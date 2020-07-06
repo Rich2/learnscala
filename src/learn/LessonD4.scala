@@ -3,7 +3,7 @@ package learn
 import ostrat._, geom._, pCanv._, Colour._
 
 /** Lesson D4 Settings. */
-case class LessonD4(canv: CanvasPlatform) extends CanvasSimple("Lesson D4")
+case class LessonD4(canv: CanvasPlatform) extends CanvasNoPanels("Lesson D4")
 {  
   val v1 = Vec2(2.3, -9.8)
   val t4 = v1.str
@@ -15,13 +15,13 @@ case class LessonD4(canv: CanvasPlatform) extends CanvasSimple("Lesson D4")
   val v5 = 4.4 vv 5.5
   val v6 = v5.addY(100)
   //So in this longer example, the semicolons and commas become more useful. You can't do this with toString
-  val t1 = Polygon(v1, v2, v3, v4, v5, v6)
+  val t1 = PolygonClass(v1, v2, v3, v4, v5, v6)
   val t2 = LinePath(v1, v2, v3, v4, v5, v6)
   val c1 = Colour.Azure  
   val t3 = t1.fill(c1)
   val s3 = "0xFFFFFFFF";
-  val c3 = s3.findTokens
-  val c4 = s3.findStatements
+  val c3 = s3.parseTokens
+  val c4 = s3.parseStatements
   val c5 = s3.findType[Colour]
   val tl1 = Rval(t1) - t2 - c1
   
