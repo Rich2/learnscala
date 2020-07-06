@@ -1,10 +1,8 @@
 package learn
-import javafx.application.Application, javafx.scene.Scene, javafx.stage.Stage
-import ostrat.pFx._
+import javafx.application.Application, javafx.scene.Scene, javafx.stage.Stage, ostrat.pFx._
 
 object MyApp 
-{
-  def main(args: Array[String]): Unit = javafx.application.Application.launch(classOf[AppStart], args: _*)
+{ def main(args: Array[String]): Unit = javafx.application.Application.launch(classOf[AppStart], args: _*)
 }
 
 class AppStart extends Application
@@ -24,4 +22,4 @@ class AppStart extends Application
     primaryStage.setScene(jScene)
     primaryStage.show
   }
-}  
+}
