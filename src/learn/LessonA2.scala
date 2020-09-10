@@ -1,3 +1,4 @@
+/* Copyright 2018-20 Licensed under Apache Licence version 2.0. */
 package learn
 import ostrat._, geom._, pCanv._, Colour._
 
@@ -6,10 +7,19 @@ case class LessonA2(canv: CanvasPlatform) extends CanvasNoPanels("Lesson A2")
   // everything on a line onwards from // is ignored by the compiler (which turns code into something a machine can run)
   // they are useful amongst other things for humans to remind themselves what is intended in their coding and give hints to others trying to understand
   // ??comment for repaints?
+  //val sq0 = Square(100, Vec2Z, 0.degs).fill(Violet)
+ // val sq1 = Square(100, -100, 200, 0.degs).fill(Red)
+ // debvar(sq.shape.cen)
+  //debvar(sq.shape.v2)
+  //debvar(sq.v3)
+  val sq2 = SquareGen(100, -100, 100, 0.degs)
+  val sq3 = SquareGen(100, -200, 100, 20.degs)
+ // debvar(sq0)
+
   repaints(
     //Below we create a Text Graphic Object and we customise it by using arguments (parameters that are separated with commas)
     // the first argument is the text to be displayed, the second is an integer number describing the font size to use
-    TextGraphic("This text is in the centre of the frame.", 18),
+    TextGraphic("0, 0", 18),
 
     //Here we create another Text Graphic Object as before with a third argument which specifies where to place the
     // Text Graphic on the screen, using a point (Vec2 = 2 dimensional vector) from the centre of the screen
@@ -28,6 +38,13 @@ case class LessonA2(canv: CanvasPlatform) extends CanvasNoPanels("Lesson A2")
     TextGraphic("-300, 100", 14, -300 vv 100, Violet),
     TextGraphic("x=0, y=100", 14, 0 vv 100, Green),
     TextGraphic("222, 100", 14, 222 vv 100, SlateBlue),
+    Triangle.fill(-100 vv 0, 0 vv -200, -300 vv -400, Violet),
+    Rectangle(200, 100, 100 vv 50).fillOld(Green),
+   // sq0,
+   // sq1,
+   // sq2.fill(Pink),
+   // sq3.fill(Colour.DarkMagenta),
+    TextGraphic("s1", 24, -100 vv 200)
   )
 }
 

@@ -1,13 +1,15 @@
+/* Copyright 2018-20 Licensed under Apache Licence version 2.0. */
 package learn
 import ostrat._, geom._, pCanv._, Colour._
 
 case class LessonA1(canv: CanvasPlatform) extends CanvasNoPanels("Lesson A1")
 {
   repaints(
-    Triangle.fill(-100 vv 0, 0 vv -200, -300 vv -400, Violet),
-    Rectangle(200, 100, 100 vv 50).fill(Green),
-    //Square.fill(Orange).scaleSlateX(100, 300),
-    TextGraphic("Hello World!"),
+    Circle(100, 0, 0).fill(SeaGreen),
+    Circle(70, 50, 80).fill(Orange),
+    Circle(80, 300, 0).fill(Red),
+    Circle(80, -250, 150).fill(LemonLime),
+    Circle(40, 0, -220).fill(DarkGoldenRod),
   )
 }
 
